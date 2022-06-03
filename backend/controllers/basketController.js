@@ -7,7 +7,7 @@ class BasketController {
         try {
             const {id} = req.body;
             const token = req.headers.authorization.split(' ')[1];
-            const user = jwt.verify(token, process.env.SECRET_KEY);
+            const user = jwt.verify(token,"" + process.env.SECRET_KEY);
             const basket = await Basket.findOne({where: {userId: user.id}});
             await BasketDevice.create({basketId : basket.id, deviceId: id});
             return res.json("Product added in card");
@@ -19,7 +19,7 @@ class BasketController {
     async getDevices(req, res) {
         try {
             const token = req.headers.authorization.split(' ')[1];
-            const user = jwt.verify(token, process.env.SECRET_KEY);
+            const user = jwt.verify(token,"" + process.env.SECRET_KEY);
             const {id} = await Basket.findOne({where: {userId: user.id}});
             const basket = await BasketDevice.findAll({where: {basketId: id}});
 

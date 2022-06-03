@@ -2,11 +2,11 @@ const ApiError = require('./../error/apiError');
 const bcrypt = require('bcrypt');
 const {User, Basket} = require('./../models/models');
 const jwt = require('jsonwebtoken');
-
+require("dotenv").config();
 const generateJwt = (id, email, role) => {
     return jwt.sign(
         {id, email, role},
-        process.env.SECRET_KEY,
+       "" + process.env.SECRET_KEY,
         {expiresIn: '24h'}
     );
 }

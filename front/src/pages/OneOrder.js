@@ -37,12 +37,12 @@ const OneOrder = () => {
 
     return (
         <Container className="d-flex flex-column">
-            Order id: {id} <br />
-            Complete: {order?.descr.complete ? "Completed" : "Not complete"} <br />
-            User: {order?.descr.userId ?  order.descr.userId : "User didn't register"} <br />
-            Created: {formatDate(order?.descr.createdAt)} <br />
+            Закак id: {id} <br />
+            Статус: {order?.descr.complete ? "Готов" : "Не готов"} <br />
+            Пользователь: {order?.descr.userId ?  order.descr.userId : "Пользователь не зарегистрирован"} <br />
+            Создан: {formatDate(order?.descr.createdAt)} <br />
             {order?.descr.complete ? formatDate(order.descr.complete.updatedAt) : false }
-            <a href={`tel:${order?.descr.mobile}`}>Mobile: {order?.descr.mobile}</a>
+            <a href={`tel:${order?.descr.mobile}`}>Телефон: {order?.descr.mobile}</a>
             <br />
 
             {order?.devices.map( ({count,descr}, i) => {
@@ -52,12 +52,12 @@ const OneOrder = () => {
                             <Image width={150} src={process.env.REACT_APP_API_URL + descr.img}/>
                         </Col>
                         <Col xs={10}>
-                            Brand: {descr.brand.name}<br />
-                            Type: {descr.type.name}<br />
-                            Name: {descr.name}<br />
-                            Price: {descr.price} RUB<br />
-                            Count: {count}<br />
-                            Total price: {count * descr.price} RUB
+                            Производитель: {descr.brand.name}<br />
+                            Тип: {descr.type.name}<br />
+                            Название: {descr.name}<br />
+                            Цена: {descr.price} руб<br />
+                            Количество: {count}<br />
+                            Итого: {count * descr.price} руб
                         </Col>
                     </Row>
                 )

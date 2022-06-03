@@ -6,7 +6,7 @@ class RatingController {
         try {
             const {rate, deviceId} = req.body;
             const token = req.headers.authorization.split(' ')[1];
-            const user = jwt.verify(token, process.env.SECRET_KEY);
+            const user = jwt.verify(token,"" + process.env.SECRET_KEY);
             await Rating.create({rate, deviceId, userId: user.id});
 
             let rating = await Rating.findAndCountAll({
@@ -35,7 +35,7 @@ class RatingController {
         try {
             const {deviceId} = req.body;
             const token = req.headers.authorization.split(' ')[1];
-            const user = jwt.verify(token, process.env.SECRET_KEY);
+            const user = jwt.verify(token, "" + process.env.SECRET_KEY);
             const checkRating = await Rating.findOne({where: {deviceId, userId: user.id}});
             const checkDevices =  await Device.findOne({where: {id: deviceId}});
             if (!checkDevices) {

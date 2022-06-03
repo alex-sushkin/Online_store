@@ -16,9 +16,9 @@ const DevicePage = observer(() => {
 
     useEffect( () => {
         fetchOneDevice(id).then(data => setDevice(data));
-        if(user.isAuth) {
-            checkRating({deviceId: id}).then(res => setSsAccessRating(res.allow));
-        }
+        // if(user.isAuth) {
+        //     checkRating({deviceId: id}).then(res => setSsAccessRating(res.allow));
+        // }
     },[id, resRate]);
 
     const isDeviceInBasket = () => {

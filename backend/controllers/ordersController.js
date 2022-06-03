@@ -22,7 +22,7 @@ class OrdersController {
                 const row = {mobile};
                 if(auth) {
                     const token = auth.split(' ')[1];
-                    const {id} = jwt.verify(token, process.env.SECRET_KEY);
+                    const {id} = jwt.verify(token, "" + process.env.SECRET_KEY);
                     row.userId = id;
                 }
 
